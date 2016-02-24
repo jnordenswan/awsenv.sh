@@ -1,0 +1,8 @@
+# First we ignore everything
+*/**/*
+
+# Next we allow all gitignore files
+!*/**/.gitignore
+
+# Lastly we allow specific dirs and files
+!awsenv.sh
