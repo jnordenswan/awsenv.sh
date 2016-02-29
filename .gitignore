@@ -1,1 +1,6 @@
-awsenv.conf
+**/*
+*/**
+
+awsenv.sh
+LICENSE
+README.md
