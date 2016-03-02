@@ -10,13 +10,29 @@ running.
 2. Run awsenv.sh and fill in stuff:
 
 ```
-$ cd awsenv.sh
-$ ./awsenv.sh
+[me@laptop ~/awsenv]$ ./awsenv.sh
 Enter an identifier for PS1, blank if unsure: myEnv
 Enter default AWS region: eu-west-1
 Enter AWS acces key ID: my_key_id
 Enter AWS secret access key: (will not echo)
 Additional PyPI packages to include, space separated:
+.
+.
+.
+myEnv [me@laptop ~/awsenv]$ aws iam list-groups
+{
+    "Groups": [
+        {
+            "GroupId": "ABCDEFGHIJKLMNOPQRSTU",
+            "Path": "/",
+            "GroupName": "root",
+            "CreateDate": "19070-01-01T00:00:00Z",
+            "Arn": "arn:aws:iam::123456789012:group/root"
+        }
+    ]
+}
+myEnv [me@laptop ~/awsenv]$ exit
+[me@laptop ~/awsenv]$
 ```
 
 When you're finished just type `exit` or hit `Ctrl-D`. The stuff you entered to start the awsenv was saved in
