@@ -9,17 +9,12 @@ if [ -s $CONFFILE ]
     then
         source $CONFFILE
     else
-        printf "Enter an identifier for PS1, blank if unsure: "
-        read PS1_PREFIX
-        printf "Enter default AWS region: "
-        read AWS_DEFAULT_REGION
-        printf "Enter AWS acces key ID: "
-        read AWS_ACCESS_KEY_ID
-        printf "Enter AWS secret access key: (will not echo) "
-        read -s AWS_SECRET_ACCESS_KEY
-        echo
-        printf "Additional PyPI packages to include, space separated: "
-        read PYPI_PACKAGES
+        read -p "Enter an identifier for PS1, blank if unsure: " PS1_PREFIX
+        read -p "Enter default AWS region: " AWS_DEFAULT_REGION
+        read -p "Enter AWS acces key ID: " AWS_ACCESS_KEY_ID
+        read -p "Enter AWS secret access key: (will not echo) " -s AWS_SECRET_ACCESS_KEY && echo
+        read -p "Additional PyPI packages to include, space separated: " PYPI_PACKAGES
+
         echo "PS1_PREFIX=$PS1_PREFIX" > $CONFFILE
         echo "AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION" >> $CONFFILE
         echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> $CONFFILE
@@ -31,7 +26,7 @@ INITSTR="$TEMPDIR/virtualenv/virtualenv.py $TEMPDIR/awsenv --prompt=\"$PS1_PREFI
         source $TEMPDIR/awsenv/bin/activate && \
         pip install awscli $PYPI_PACKAGES && \
         alias deactivate=exit && \
-        export PATH=$THISDIR:$TEMPDIR/awsenv/bin:$PATH && \
+        export PATH=$TEMPDIR/awsenv/bin:$PATH && \
         export AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION && \
         export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID && \
         export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY && \
