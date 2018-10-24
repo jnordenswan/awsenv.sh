@@ -34,7 +34,7 @@ INITSTR="$TEMPDIR/virtualenv/virtualenv.py $TEMPDIR/awsenv --prompt=\"$PS1_PREFI
         if [ $SHELL == '/bin/bash' ]; then complete -C '$TEMPDIR/awsenv/bin/aws_completer' aws; fi && \
         echo"
 
-git clone --depth 1 git@github.com:pypa/virtualenv.git $TEMPDIR/virtualenv
+git clone -b '15.1.0' --single-branch --depth 1 git@github.com:pypa/virtualenv.git $TEMPDIR/virtualenv
 
 bash --init-file <(echo $INITSTR)
 
